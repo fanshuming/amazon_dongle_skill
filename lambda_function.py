@@ -17,11 +17,11 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
             'type': 'PlainText',
             'text': output
         },
-        'card': {
+        #'card': {
             'type': 'Simple',
            # 'title': "SessionSpeechlet - " + title,
            # 'content': "SessionSpeechlet - " + output
-        },
+       # },
         'reprompt': {
             'outputSpeech': {
                 'type': 'PlainText',
@@ -68,7 +68,7 @@ def get_welcome_response(session):
     
     if 'accessToken' in session['user']:
         card_title = "Welcome"
-        speech_output = "You can control the top qizhi smart bed with the voice command like this:'head up' "
+        speech_output = "You can control the smart bed with the voice command like head up"
         # If the user either does not reply to the welcome message or says something
         # that is not understood, they will be prompted again with this text.
         reprompt_text = None
@@ -1116,3 +1116,4 @@ def lambda_handler(event, context):
         return on_intent(event['request'], event['session'])
     elif event['request']['type'] == "SessionEndedRequest":
         return on_session_ended(event['request'], event['session'])
+
